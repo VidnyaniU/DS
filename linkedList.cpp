@@ -5,12 +5,12 @@ class Node
 {
 public:
     int data;
-    Node *next;
+    Node *next; // address of next node
 
-    Node(int data)
+    Node(int val)
     {
-        this->data = data;
-        this->next = nullptr;
+        this->data = val;
+        this->next = NULL;
     }
 };
 
@@ -26,7 +26,13 @@ public:
         this->head = nullptr;
     }
 
-    void insertAtBeginning(int data);
+    void insertAtBeginning(int data)
+    {
+        Node *newNode = new Node(data); // creating a new node
+        newNode->next = head;           // storing the address of current head in the next node of new node
+        head = newNode;                 // updating head to newNode
+        return;
+    }
     void insertAtEnd(int data);
     void insertAt(int data, int position);
     void deleteFromBeginning();
