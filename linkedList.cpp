@@ -33,7 +33,24 @@ public:
         head = newNode;                 // updating head to newNode
         return;
     }
-    void insertAtEnd(int data);
+    void insertAtEnd(int data)
+    {
+        Node *newNode = new Node(data);
+        // check if the linkedlist is empty
+        if (head == NULL)
+        {
+            head = newNode;
+            return;
+        }
+        // to traverse through whole linked list
+        Node *temp = head;
+        while (temp->next != NULL)
+        {
+            temp = temp->next; // until we get next = NULL we will run this loop
+        }                      // after this loop we have reached at our last element
+
+        temp->next = newNode; // inserting at end
+    }
     void insertAt(int data, int position);
     void deleteFromBeginning();
     void deleteFromEnd();
