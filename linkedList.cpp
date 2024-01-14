@@ -90,7 +90,46 @@ public:
             listSize++;
         }
     }
-    void deleteFromBeginning();
-    void deleteFromEnd();
-    void deleteFrom(int position);
+    void deletion(int val) // to delete nth node point (n-1)th node to (n+1)th node
+    {
+        Node *temp = head;
+        while (temp->next->data != val)
+        {
+            temp = temp->next;
+        }
+        Node *todelete = temp->next;   // node to delete
+        temp->next = temp->next->next; // next of temp becomes next of next of temp
+        delete todelete;
+    }
+
+    void printList()
+    {
+        Node *temp = head;
+        while (temp != NULL)
+        {
+
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+        cout << endl;
+    }
 };
+
+int main()
+{
+    // create linked list
+    linkedList list;
+    list.insertAtBeginning(1);
+    list.insertAtEnd(3);
+    list.insertAt(2, 2);
+
+    // print list
+    cout << "List: ";
+    list.printList();
+
+    list.deletion(2);
+    cout << "After deletion List: ";
+    list.printList();
+
+    return 0;
+}
