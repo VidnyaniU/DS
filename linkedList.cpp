@@ -90,8 +90,25 @@ public:
             listSize++;
         }
     }
+    void deleteFromBeginning()
+    {
+        Node *todelete = head;
+        head = head->next; // poiting the head to the second element
+        delete todelete;   // deleting first element
+    }
     void deletion(int val) // to delete nth node point (n-1)th node to (n+1)th node
     {
+        if (head == NULL) // if ll is empty
+        {
+            return;
+        }
+
+        // if only one element is there
+        if (head->next == NULL)
+        {
+            deleteFromBeginning();
+            return;
+        }
         Node *temp = head;
         while (temp->next->data != val)
         {
@@ -131,5 +148,8 @@ int main()
     cout << "After deletion List: ";
     list.printList();
 
+    list.deleteFromBeginning();
+    cout << "After deletion from head List: ";
+    list.printList();
     return 0;
 }
