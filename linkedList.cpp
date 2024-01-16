@@ -119,16 +119,34 @@ public:
         delete todelete;
     }
 
+    // reverse linked list using iterative approach
+    void reverseIter()
+    {
+        // we will use 3 pointers and iterate them until we reach current =NULL
+        Node *prevPtr = NULL;
+        Node *currPtr = head;
+        Node *nextPtr;
+
+        while (currPtr != NULL)
+        {
+            nextPtr = currPtr->next;
+            currPtr->next = prevPtr;
+
+            prevPtr = currPtr;
+            currPtr = nextPtr;
+        }
+        head = prevPtr; // this is our new head
+    }
     void printList()
     {
         Node *temp = head;
         while (temp != NULL)
         {
 
-            cout << temp->data << " ";
+            cout << temp->data << "->";
             temp = temp->next;
         }
-        cout << endl;
+        cout << "NULL" << endl;
     }
 };
 
@@ -144,12 +162,16 @@ int main()
     cout << "List: ";
     list.printList();
 
-    list.deletion(2);
-    cout << "After deletion List: ";
+    // list.deletion(2);
+    // cout << "After deletion List: ";
+    // list.printList();
+
+    // list.deleteFromBeginning();
+    // cout << "After deletion from head List: ";
+    // list.printList();
+
+    list.reverseIter();
     list.printList();
 
-    list.deleteFromBeginning();
-    cout << "After deletion from head List: ";
-    list.printList();
     return 0;
 }
