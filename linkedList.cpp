@@ -137,6 +137,20 @@ public:
         }
         head = prevPtr; // this is our new head
     }
+
+    Node *reverseRecur(Node *head)
+    {
+        if (head == NULL || head->next = NULL)
+        {
+            return head;
+        }
+
+        Node *newhead = reverseRecur(head->next);
+        head->next->next = head;
+        head->next = NULL;
+
+        return newhead;
+    }
     void printList()
     {
         Node *temp = head;
@@ -154,6 +168,8 @@ int main()
 {
     // create linked list
     linkedList list;
+    Node *head = NULL;
+
     list.insertAtBeginning(1);
     list.insertAtEnd(3);
     list.insertAt(2, 2);
@@ -169,8 +185,7 @@ int main()
     // list.deleteFromBeginning();
     // cout << "After deletion from head List: ";
     // list.printList();
-
-    list.reverseIter();
+    list.reverseRecur(head);
     list.printList();
 
     return 0;
