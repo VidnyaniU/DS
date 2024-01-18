@@ -138,19 +138,19 @@ public:
         head = prevPtr; // this is our new head
     }
 
-    Node *reverseRecur(Node *head)
-    {
-        if (head == NULL || head->next = NULL)
-        {
-            return head;
-        }
+    // Node *reverseRecur(Node *head)
+    // {
+    //     if (head == NULL || head->next == NULL)
+    //     {
+    //         return head;
+    //     }
 
-        Node *newhead = reverseRecur(head->next);
-        head->next->next = head;
-        head->next = NULL;
+    //     Node *newhead = reverseRecur(head->next);
+    //     head->next->next = head;
+    //     head->next = NULL;
 
-        return newhead;
-    }
+    //     return newhead;
+    // }
     void printList()
     {
         Node *temp = head;
@@ -185,7 +185,7 @@ int main()
     // list.deleteFromBeginning();
     // cout << "After deletion from head List: ";
     // list.printList();
-    list.reverseRecur(head);
+    // list.reverseRecur(head);
     list.printList();
 
     return 0;
