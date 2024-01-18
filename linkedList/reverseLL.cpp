@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-// Node class
+// Node struct
 struct Node
 {
     int data;
