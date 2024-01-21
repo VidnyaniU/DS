@@ -50,6 +50,29 @@ struct LinkedList
         }
         return false;
     }
+    // to remove the cycle
+
+    void removeCycle(Node *&head)
+
+    {
+        Node *fast = head; // hare
+        Node *slow = head; // tortoise
+        do
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        } while (slow != fast); // after the end of this loop cycle is detected
+        // after detection of the cycle we will put the hare(or tortoise) at the head and move of them one step
+        // and wherever we detect that both (hare and tortoise) of the next pointing to same Node we will make next of tortoise(or hare) point to NULL
+
+        fast = head;
+        while (slow->next != fast->next)
+        {
+            slow = slow->next;
+            fast = fast->next;
+        }
+        slow->next = NULL;
+    }
 
     void makeCycle(Node *&head, int pos)
     {
@@ -97,6 +120,11 @@ int main(int argc, char const *argv[])
     // ll.printList();
     bool detectCyc = ll.detectCycle(ll.head);
     cout << detectCyc << endl;
+    ll.removeCycle(ll.head);
+
+    cout << detectCyc << endl;
+
+    ll.printList();
 
     return 0;
 }
