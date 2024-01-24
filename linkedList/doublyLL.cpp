@@ -43,6 +43,37 @@ void insertAtEnd(Node *&head, int val)
     temp->next = n;
     n->prev = temp;
 }
+void deleteFromHead(Node *&head)
+{
+    Node *toDelete = head;
+    head = head->next;
+    head->prev = NULL;
+    delete toDelete;
+}
+void deleteFrom(Node *&head, int pos)
+{
+    if (pos == 1)
+    {
+        deleteFromHead(head);
+    }
+
+    Node *temp = head;
+    int count = 1;
+    while (temp != NULL && count != pos)
+    {
+        temp = temp->next;
+        count++;
+    }
+    // to delete
+    // suppose we want to delete 2 from 0 1 2 3 4
+    temp->prev->next = temp->next; // 1's next will point to 3
+    if (temp->next != NULL)        // check if the element we are deleting is the last one because if it is then its next NULL which wont have a prev ptr
+    {
+        temp->next->prev = temp->prev; // 3's prev will point to 1
+    }
+
+    delete temp;
+}
 
 void printList(Node *head)
 {
@@ -64,6 +95,10 @@ int main()
     insertAtEnd(head, 5);
     printList(head);
     insertAtBeginning(head, 0);
+    printList(head);
+    deleteFromHead(head);
+    printList(head);
+    deleteFrom(head, 2);
     printList(head);
 
     return 0;
