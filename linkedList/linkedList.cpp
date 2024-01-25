@@ -113,7 +113,7 @@ public:
         temp->next = temp->next->next; // next of temp becomes next of next of temp
         delete todelete;
     }
-
+    
     void printList()
     {
         Node *temp = head;
