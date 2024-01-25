@@ -1,20 +1,15 @@
 #include <iostream>
+#include "node.hpp"
+
 using namespace std;
 
 int listSize = 0;
 // Node class
-class Node
+Node::Node(int val)
 {
-public:
-    int data;
-    Node *next; // address of next node
-
-    Node(int val)
-    {
-        this->data = val;
-        this->next = NULL;
-    }
-};
+    this->data = val;
+    this->next = NULL;
+}
 
 // linked list class
 class linkedList
