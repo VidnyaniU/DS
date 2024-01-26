@@ -167,6 +167,62 @@ void linkedList::removeCycle(Node *&head)
     }
     slow->next = NULL;
 }
+void linkedList::reverseIter()
+{
+    // we will use 3 pointers and iterate them until we reach current =NULL
+    Node *prevPtr = NULL;
+    Node *currPtr = head;
+    Node *nextPtr;
+
+    while (currPtr != NULL)
+    {
+        nextPtr = currPtr->next;
+        currPtr->next = prevPtr;
+
+        prevPtr = currPtr;
+        currPtr = nextPtr;
+    }
+    head = prevPtr; // this is our new head
+}
+
+Node *linkedList::reverseRecur(Node *head)
+{
+    if (head == NULL || head->next == NULL)
+    {
+        return head;
+    }
+
+    Node *newhead = reverseRecur(head->next);
+    head->next->next = head;
+    head->next = NULL;
+
+    return newhead;
+}
+// reverse k nodes in a linked list
+Node *linkedList::reverseK(Node *&head, int k)
+{
+    Node *prevptr = NULL;
+    Node *currptr = head;
+    Node *nextptr;
+
+    int count = 0;
+    while (currptr != NULL && count < k) // to reverse k nodes
+    {
+        nextptr = currptr->next;
+        currptr->next = prevptr;
+        prevptr = currptr;
+        currptr = nextptr;
+        count++;
+    }
+    // check  if nextptr is NULL
+    if (nextptr != NULL)
+    {
+        // next k nodes
+        head->next = reverseK(nextptr, k);
+    }
+
+    return prevptr;
+}
 void linkedList::printList()
 {
     Node *temp = head;

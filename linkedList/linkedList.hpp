@@ -15,5 +15,8 @@ public:
     bool detectCycle(Node *&head);
     void makeCycle(Node *&head, int pos);
     void removeCycle(Node *&head);
+    void reverseIter();
+    Node *reverseRecur(Node *head);
+    Node *reverseK(Node *&head, int k);
     void printList();
 };
