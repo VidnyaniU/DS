@@ -11,6 +11,9 @@ public:
     void insertAtEnd(int);
     void insertAt(int, int);
     void deleteFromBeginning();
-    void deletion(int); // to delete nth node point (n-1)th node to (n+1)th node
+    void deletion(int);
+    bool detectCycle(Node *&head);
+    void makeCycle(Node *&head, int pos);
+    void removeCycle(Node *&head);
     void printList();
 };

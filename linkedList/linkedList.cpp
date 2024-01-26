@@ -108,6 +108,65 @@ void linkedList::deletion(int val) // to delete nth node point (n-1)th node to (
     delete todelete;
 }
 
+// to detect cycle we use floyds algorithm
+// we hare(fast pointer) which takes 2 steps  and tortoise (slow  pointer) which takes 1 step at a time
+// if hare and tortoise comes to the same position after some point then cycle is detected
+bool linkedList::detectCycle(Node *&head)
+{
+    // at start hare and tortoise will point to same head
+    Node *slow = head;
+    Node *fast = head;
+
+    while (fast != NULL && fast->next != NULL)
+    {
+        slow = slow->next;       // moving one step forward
+        fast = fast->next->next; // two steps forward
+
+        if (fast == slow)
+        {
+            return true; // cycle detected
+        }
+    }
+    return false;
+}
+void linkedList::makeCycle(Node *&head, int pos)
+{
+    Node *temp = head;
+    Node *startNode;
+
+    int count = 1;
+    while (temp->next != NULL)
+    {
+        if (count == pos)
+        {
+            startNode = temp; // start  cycle from here
+        }
+        temp = temp->next;
+        count++;
+    }
+    temp->next = startNode;
+}
+void linkedList::removeCycle(Node *&head)
+
+{
+    Node *fast = head; // hare
+    Node *slow = head; // tortoise
+    do
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    } while (slow != fast); // after the end of this loop cycle is detected
+    // after detection of the cycle we will put the hare(or tortoise) at the head and move of them one step
+    // and wherever we detect that both (hare and tortoise) of the next pointing to same Node we will make next of tortoise(or hare) point to NULL
+
+    fast = head;
+    while (slow->next != fast->next)
+    {
+        slow = slow->next;
+        fast = fast->next;
+    }
+    slow->next = NULL;
+}
 void linkedList::printList()
 {
     Node *temp = head;
@@ -119,5 +178,3 @@ void linkedList::printList()
     }
     cout << "NULL" << endl;
 }
-
-

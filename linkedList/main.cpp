@@ -7,7 +7,7 @@ int main()
 {
     // create linked list
     linkedList list;
-    // Node *head = NULL;
+    Node *head = NULL;
 
     list.insertAtBeginning(1);
     list.insertAtEnd(3);
@@ -25,6 +25,6 @@ int main()
     // cout << "After deletion from head List: ";
     // list.printList();
     list.printList();
-
+    cout << list.detectCycle(head) << endl;
     return 0;
 }
