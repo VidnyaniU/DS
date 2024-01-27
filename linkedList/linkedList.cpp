@@ -5,7 +5,6 @@
 using namespace std;
 
 int listSize = 0;
-// Node class
 Node::Node(int val)
 {
     this->data = val;
