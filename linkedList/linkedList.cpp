@@ -222,6 +222,45 @@ Node *linkedList::reverseK(Node *&head, int k)
 
     return prevptr;
 }
+// append last k nodes of a ll at head so l-kth node points to NULL and l-k+1 th node becomes head
+int linkedList::length(Node *&head)
+{
+    int l = 0;
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        l++;
+        temp = temp->next;
+    }
+    return l;
+}
+Node *linkedList::appendK(Node *&head, int k)
+{
+    Node *newHead;
+    Node *newTail;
+    Node *tail = head;
+
+    int l = length(head);
+    k = k % l; // what if k becomes greater than l
+    int count = l;
+    while (tail->next != NULL)
+    {
+        if (count == l - k)
+        {
+            newTail = tail;
+        }
+        if (count == l - k + 1)
+        {
+            newHead = tail;
+        }
+        tail = tail->next;
+        count++;
+    }
+    newTail->next = NULL;
+    tail->next = head;
+    return newHead;
+}
+
 void linkedList::printList()
 {
     Node *temp = head;
@@ -233,3 +272,15 @@ void linkedList::printList()
     }
     cout << "NULL" << endl;
 }
+
+// void linkedList::printList(Node *head)
+// {
+//     Node *temp = head;
+//     while (temp != NULL)
+//     {
+
+//         cout << temp->data << "->";
+//         temp = temp->next;
+//     }
+//     cout << "NULL" << endl;
+// }
