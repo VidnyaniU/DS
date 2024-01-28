@@ -234,33 +234,32 @@ int linkedList::length(Node *&head)
     }
     return l;
 }
-Node *linkedList::appendK(Node *&head, int k)
+/*
+Node *linkedList::appendK(Node *head, int k)
 {
-    Node *newHead;
-    Node *newTail;
+
+    Node *newTail = head;
+    Node *newHead = head->next;
     Node *tail = head;
 
-    int l = length(head);
-    k = k % l; // what if k becomes greater than l
-    int count = l;
+    while (k > 0)
+    {
+        tail = tail->next;
+        k--;
+    }
+
     while (tail->next != NULL)
     {
-        if (count == l - k)
-        {
-            newTail = tail;
-        }
-        if (count == l - k + 1)
-        {
-            newHead = tail;
-        }
+        newHead = newHead->next;
+        newTail = newTail->next;
         tail = tail->next;
-        count++;
     }
     newTail->next = NULL;
     tail->next = head;
+
     return newHead;
 }
-
+*/
 void linkedList::printList()
 {
     Node *temp = head;

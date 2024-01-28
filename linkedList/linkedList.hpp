@@ -19,7 +19,7 @@ public:
     Node *reverseRecur(Node *head);
     Node *reverseK(Node *&head, int k);
     int length(Node *&head);
-    Node *appendK(Node *&head, int k);
+    // Node *appendK(Node *head, int k);
     void printList();
     void printList(Node *head);
 };

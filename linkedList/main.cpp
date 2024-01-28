@@ -27,7 +27,7 @@ int main()
     // list.deleteFromBeginning();
     // cout << "After deletion from head List: ";
     // list.printList();
-    list.appendK(head, 2);
+    // list.appendK(head, 2);
     list.printList();
     // cout << list.detectCycle(head) << endl;
     return 0;
